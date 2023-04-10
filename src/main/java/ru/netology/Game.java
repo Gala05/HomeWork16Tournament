@@ -25,7 +25,7 @@ public class Game {
 
     public Player findByName(String playerName) {
         for (Player player : getPlayers()) {
-            if (player.getPlayerName() == playerName) {
+            if (player.getPlayerName().equals(playerName)) {
                 return player;
             }
         }
@@ -38,24 +38,26 @@ public class Game {
         Player player1 = null;
         Player player2 = null;
 
-        for (Player player : players) {
-            if (player.getPlayerName().equals(playerName1)) {
-                player1 = player;
-            }
-            if (player.getPlayerName().equals(playerName2)) {
-                player2 = player;
-            }
-        }
-        if (player1 == null) {
-            throw new NotRegisteredException(
-                    "Element with name: " + playerName1 + " not found"
-            );
-        }
-        if (player2 == null) {
-            throw new NotRegisteredException(
-                    "Element with name: " + playerName1 + " not found"
-            );
-        }
+        player1 = findByName(playerName1);
+        player2 = findByName(playerName2);
+//        for (Player player : players) {
+//            if (player.getPlayerName().equals(playerName1)) {
+//                player1 = player;
+//            }
+//            if (player.getPlayerName().equals(playerName2)) {
+//                player2 = player;
+//            }
+//        }
+//        if (player1 == null) {
+//            throw new NotRegisteredException(
+//                    "Element with name: " + playerName1 + " not found"
+//            );
+//        }
+//        if (player2 == null) {
+//            throw new NotRegisteredException(
+//                    "Element with name: " + playerName1 + " not found"
+//            );
+//        }
         if (player1.getStrength() < player2.getStrength()) {
             return -1;
         } else {
