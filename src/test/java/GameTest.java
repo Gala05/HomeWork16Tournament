@@ -4,7 +4,7 @@ import ru.netology.Game;
 import ru.netology.NotRegisteredException;
 import ru.netology.Player;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GameTest {
     @Test
@@ -18,8 +18,8 @@ public class GameTest {
 
     @Test
     public void findAllTest() {
-        ArrayList<Player> player = new ArrayList<>();
-        Game game = new Game(player);
+        HashMap<Player, Player> players = new HashMap<>();
+        Game game = new Game(players);
         Player player1 = new Player(1, "Name1", 1000);
         Player player2 = new Player(2, "Name2", 920);
         Player player3 = new Player(3, "Name3", 810);
@@ -30,24 +30,25 @@ public class GameTest {
         Player player8 = new Player(8, "Name8", 356);
         Player player9 = new Player(9, "Name9", 245);
         Player player10 = new Player(10, "Name10", 100);
-        player.add(player1);
-        player.add(player2);
-        player.add(player3);
-        player.add(player4);
-        player.add(player5);
-        player.add(player6);
-        player.add(player7);
-        player.add(player8);
-        player.add(player9);
-        player.add(player10);
-        ArrayList<Player> expected = player;
-        ArrayList<Player> actual = game.findAll();
+        players.put(player1, player1);
+        players.put(player2, player2);
+        players.put(player3, player3);
+        players.put(player4, player4);
+        players.put(player5, player5);
+        players.put(player6, player6);
+        players.put(player7, player7);
+        players.put(player8, player8);
+        players.put(player9, player9);
+        players.put(player10, player10);
+
+        HashMap<Player, Player> expected = players;
+        HashMap<Player, Player> actual = game.findAll();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void findByIdMinTest() {
-        ArrayList<Player> players = new ArrayList<>();
+        HashMap<Player, Player> players = new HashMap<>();
         Game game = new Game(players);
         Player player1 = new Player(1, "Name1", 1000);
         Player player2 = new Player(2, "Name2", 920);
@@ -67,7 +68,7 @@ public class GameTest {
 
     @Test
     public void findByIdMaxTest() {
-        ArrayList<Player> players = new ArrayList<>();
+        HashMap<Player, Player> players = new HashMap<>();
         Game game = new Game(players);
         Player player1 = new Player(1, "Name1", 1000);
         Player player2 = new Player(2, "Name2", 920);
@@ -87,7 +88,7 @@ public class GameTest {
 
     @Test
     public void findByIdNotExistTest() {
-        ArrayList<Player> players = new ArrayList<>();
+        HashMap<Player, Player> players = new HashMap<>();
         Game game = new Game(players);
         Player player1 = new Player(1, "Name1", 1000);
         Player player2 = new Player(2, "Name2", 920);
@@ -107,7 +108,7 @@ public class GameTest {
 
     @Test
     public void roundWhenExistFirstWinTest() {
-        ArrayList<Player> players = new ArrayList<>();
+        HashMap<Player, Player> players = new HashMap<>();
         Game game = new Game(players);
         Player player1 = new Player(1, "Name1", 1000);
         Player player2 = new Player(2, "Name2", 920);
@@ -121,7 +122,7 @@ public class GameTest {
 
     @Test
     public void roundWhenExistSecondWinTest() {
-        ArrayList<Player> players = new ArrayList<>();
+        HashMap<Player, Player> players = new HashMap<>();
         Game game = new Game(players);
         Player player1 = new Player(1, "Name1", 10);
         Player player2 = new Player(2, "Name2", 920);
@@ -135,7 +136,7 @@ public class GameTest {
 
     @Test
     public void roundWhenExistStrengthEqualsTest() {
-        ArrayList<Player> players = new ArrayList<>();
+        HashMap<Player, Player> players = new HashMap<>();
         Game game = new Game(players);
         Player player1 = new Player(1, "Name1", 920);
         Player player2 = new Player(2, "Name2", 920);
@@ -149,7 +150,7 @@ public class GameTest {
 
     @Test
     public void roundWhenNotExistPlayer1Test() {
-        ArrayList<Player> players = new ArrayList<>();
+        HashMap<Player, Player> players = new HashMap<>();
         Game game = new Game(players);
         Player player1 = new Player(1, "Name1", 820);
         Player player2 = new Player(2, "Name2", 920);
@@ -163,7 +164,7 @@ public class GameTest {
 
     @Test
     public void roundWhenNotExistPlayer2Test() {
-        ArrayList<Player> players = new ArrayList<>();
+        HashMap<Player, Player> players = new HashMap<>();
         Game game = new Game(players);
         Player player1 = new Player(1, "Name1", 820);
         Player player2 = new Player(2, "Name2", 920);

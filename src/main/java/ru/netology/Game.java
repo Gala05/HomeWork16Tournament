@@ -1,30 +1,32 @@
 package ru.netology;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Game {
-    private ArrayList<Player> players;
+    private HashMap<Player, Player> players = new HashMap<>();
+    //private ArrayList<Player> players;
 
 
-    public ArrayList<Player> getPlayers() {
+    public HashMap<Player, Player> getPlayers() {
         return players;
     }
 
-    public Game(ArrayList<Player> players) {
+    public Game(HashMap<Player, Player> players) {
         this.players = players;
     }
 
-    public ArrayList<Player> findAll() {
-        ArrayList<Player> all = getPlayers();
+    public HashMap<Player, Player> findAll() {
+        HashMap<Player, Player> all = getPlayers();
         return all;
     }
 
     public void register(Player player) {
-        players.add(player);
+        players.put(player, player);
     }
 
     public Player findByName(String playerName) {
-        for (Player player : getPlayers()) {
+        for (Player player : players.keySet()) {
             if (player.getPlayerName().equals(playerName)) {
                 return player;
             }
@@ -40,24 +42,6 @@ public class Game {
 
         player1 = findByName(playerName1);
         player2 = findByName(playerName2);
-//        for (Player player : players) {
-//            if (player.getPlayerName().equals(playerName1)) {
-//                player1 = player;
-//            }
-//            if (player.getPlayerName().equals(playerName2)) {
-//                player2 = player;
-//            }
-//        }
-//        if (player1 == null) {
-//            throw new NotRegisteredException(
-//                    "Element with name: " + playerName1 + " not found"
-//            );
-//        }
-//        if (player2 == null) {
-//            throw new NotRegisteredException(
-//                    "Element with name: " + playerName1 + " not found"
-//            );
-//        }
         if (player1.getStrength() < player2.getStrength()) {
             return -1;
         } else {
